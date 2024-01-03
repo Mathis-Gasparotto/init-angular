@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
 
+## Preparations
+
+**CLI :** [Angular CLI 14.2.13](https://www.npmjs.com/package/@angular/cli/v/14.2.13)
+
+**Node/nvm :** Node 16.10.0 | [Install nvm](https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
