@@ -1,0 +1,9 @@
+<h1>Welcome to {{entitySelected.name}}!</h1>
+<h2>Liste des entités</h2>
+<input type="number" min="0" max="29" (click)="selectEntity($event)">
+<ul>
+  <li *ngFor="let entity of entities" (click)="selectEntity(entity)">
+    <img [src]="entity.picture">
+    <p>{{entity.name}}</p>
+  </li>
+</ul>
