@@ -3,23 +3,17 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { BorderCardDirective } from './border-card.directive'
-import { EntityTypeColorPipe } from './entity-type-color.pipe'
-import { ListEntityComponent } from './list-entity/list-entity.component'
-import { DetailsEntityComponent } from './details-entity/details-entity.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { EntityModule } from './entity/entity.module'
 
 @NgModule({
   declarations: [
     AppComponent,
-    BorderCardDirective,
-    EntityTypeColorPipe,
-    ListEntityComponent,
-    DetailsEntityComponent,
     PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    EntityModule,
     AppRoutingModule
   ],
   providers: [],
