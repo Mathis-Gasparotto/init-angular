@@ -1,0 +1,12 @@
+.ng {
+  &-valid {
+    &[required] {
+      border-left: 3px solid #42A948;
+    }
+  }
+  &-invalid {
+    &:not(form) {
+      border-left: 3px solid #A94442;
+    }
+  }
+}

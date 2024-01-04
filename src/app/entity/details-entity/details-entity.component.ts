@@ -22,5 +22,9 @@ export class DetailsEntityComponent implements OnInit {
   goToEntityList() {
     this.router.navigate(['/entities'])
   }
+  
+  goToEditEntity() {
+    this.router.navigate(['/entities', this.entity?.id, 'edit'])
+  }
 
 }
