@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Entity } from '../entity'
-import { ENTITIES } from '../mock-entity-list'
+import { EntityService } from '../entity.service'
 
 @Component({
   selector: 'app-details-entity',
@@ -10,14 +10,13 @@ import { ENTITIES } from '../mock-entity-list'
   ]
 })
 export class DetailsEntityComponent implements OnInit {
-  entities: Entity[] = ENTITIES
   entity: Entity|undefined
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private entityService: EntityService) { }
 
   ngOnInit() {
     const id: number|null = Number(this.route.snapshot.paramMap.get('id'))
-    this.entity = this.entities.find(e => e.id === id)
+    this.entity = this.entityService.getEntityById(id)
   }
 
   goToEntityList() {

@@ -5,6 +5,7 @@ import { EntityTypeColorPipe } from './entity-type-color.pipe'
 import { ListEntityComponent } from './list-entity/list-entity.component'
 import { DetailsEntityComponent } from './details-entity/details-entity.component'
 import { RouterModule, Routes } from '@angular/router'
+import { EntityService } from './entity.service'
 
 const entityRoutes: Routes = [
   { path: 'entities', component: ListEntityComponent },
@@ -21,6 +22,9 @@ const entityRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(entityRoutes)
-  ]
+  ],
+  providers: [
+    EntityService
+  ],
 })
 export class EntityModule { }
