@@ -3,9 +3,17 @@
 <input #input type="number" min="1" max="30" (input)="selectEntity(input.value)">
 <p *ngIf="entitySelected">Entité selectionnée : {{entitySelected.name}}</p>
 <p *ngIf="!entitySelected">Aucune entité trouvée</p>
-<ul>
-  <li *ngFor="let entity of entities" (click)="selectEntity(entity.id)">
-    <img [src]="entity.picture">
-    <p>{{entity.name}}</p>
-  </li>
-</ul>
+<div class="row">
+  <div class="col s6 m4" *ngFor="let entity of entities">
+    <div class="card horizontal" (click)="selectEntity(entity.id)">
+      <div class="card-image">
+        <img [src]="entity.picture" height="170" width="170" style="object-fit: cover">
+      </div>
+      <div class="card-content">
+        <p class="card-title">{{entity.name}}</p>
+        <p>HP: {{entity.hp}}</p>
+        <p>CP: {{entity.cp}}</p>
+      </div>
+    </div>
+  </div>
+</div>
