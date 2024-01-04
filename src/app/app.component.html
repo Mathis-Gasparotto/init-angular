@@ -1,6 +1,8 @@
-<h1 >Welcome to {{entitySelected ? entitySelected.name : ''}}!</h1>
+<h1 >Welcome!</h1>
 <h2>Liste des entités</h2>
 <input #input type="number" min="1" max="30" (input)="selectEntity(input.value)">
+<p *ngIf="entitySelected">Entité selectionnée : {{entitySelected.name}}</p>
+<p *ngIf="!entitySelected">Aucune entité trouvée</p>
 <ul>
   <li *ngFor="let entity of entities" (click)="selectEntity(entity.id)">
     <img [src]="entity.picture">
