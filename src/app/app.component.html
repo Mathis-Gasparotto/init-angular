@@ -1,21 +1,8 @@
-<h1 >Welcome!</h1>
-<h2>Liste des entités</h2>
-<input #input type="number" min="1" max="30" (input)="selectEntity(input.value)">
-<p *ngIf="entitySelected">Entité selectionnée : {{entitySelected.name}}</p>
-<p *ngIf="!entitySelected">Aucune entité trouvée</p>
-<div class="row">
-  <div class="col s6 m4" *ngFor="let entity of entities">
-    <div class="card horizontal" (click)="selectEntity(entity.id)" entityBorderCard="blue" style="overflow: hidden;cursor: pointer;">
-      <div class="card-image">
-        <img [src]="entity.picture">
-      </div>
-      <div class="card-content">
-        <p class="card-title">{{entity.name}}</p>
-        <span *ngFor="let type of entity.types" class="{{type | entityTypeColor}}">{{type}}</span>
-        <p>HP: {{entity.hp}}</p>
-        <p>CP: {{entity.cp}}</p>
-        <p>Created At: {{ entity.created | date:'dd/MM/yyyy, hh:mm a':'Europe/Paris' }}</p>
-      </div>
-    </div>
+<nav>
+  <div class="nav-wrapper teal">
+    <a href="#" class="brand-logo center">
+      Angular Init
+    </a>
   </div>
-</div>
+</nav>
+<router-outlet></router-outlet>
