@@ -10,24 +10,27 @@ import { ENTITIES } from './mock-entity-list'
 
 export class AppComponent implements OnInit {
   entities = ENTITIES
-  entitySelected: Entity
+  entitySelected: Entity|undefined
 
   ngOnInit(): void {
     console.table(this.entities)
     const entity = this.getRandomEntity(this.entities)
-    this.selectEntity(entity)
+    this.selectEntity(entity.id)
   }
 
   getRandomEntity(entityList: Entity[]): Entity {
     return entityList[Math.floor(Math.random() * entityList.length)]
   }
 
-  selectEntity(entity: Entity|MouseEvent) {
-    if (entity instanceof MouseEvent) {
-      this.entitySelected = this.entities[Number((entity.target as HTMLInputElement).value)]
-    } else {
-      this.entitySelected = entity
+  selectEntity(entityId: number|string) {
+    if (typeof entityId === 'string') {
+      entityId = parseInt(entityId)
     }
-    console.log(`Vous avez cliqué sur l'entité ${this.entitySelected.name}`)
+    this.entitySelected = this.entities.find(entity => entity.id === entityId)
+    if (this.entitySelected) {
+      console.log(`Vous avez demandé l'entité ${this.entitySelected.name}`)
+    } else {
+      console.log(`Vous avez demandé une entité qui n'existe pas`)
+    }
   }
 }
