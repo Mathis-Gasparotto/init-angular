@@ -5,7 +5,7 @@
 <p *ngIf="!entitySelected">Aucune entité trouvée</p>
 <div class="row">
   <div class="col s6 m4" *ngFor="let entity of entities">
-    <div class="card horizontal" (click)="selectEntity(entity.id)">
+    <div class="card horizontal" (click)="selectEntity(entity.id)" entityBorderCard="blue">
       <div class="card-image">
         <img [src]="entity.picture" height="170" width="170" style="object-fit: cover">
       </div>
