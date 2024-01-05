@@ -10,9 +10,11 @@ import { EntityService } from './entity.service'
 import { FormsModule } from '@angular/forms'
 import { EntityFormComponent } from './entity-form/entity-form.component'
 import { EditEntityComponent } from './edit-entity/edit-entity.component'
+import { AddEntityComponent } from './add-entity/add-entity.component'
 
 const entityRoutes: Routes = [
   { path: 'entities', component: ListEntityComponent },
+  { path: 'entities/add', component: AddEntityComponent },
   { path: 'entities/:id/edit', component: EditEntityComponent },
   { path: 'entities/:id', component: DetailsEntityComponent }
 ]
@@ -25,6 +27,7 @@ const entityRoutes: Routes = [
     DetailsEntityComponent,
     EntityFormComponent,
     EditEntityComponent,
+    AddEntityComponent,
   ],
   imports: [
     CommonModule,

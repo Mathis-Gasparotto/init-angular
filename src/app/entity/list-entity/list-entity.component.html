@@ -1,3 +1,4 @@
+<h4 *ngIf='loading' class="center">Loading...</h4>
 <div class="row">
   <div class="col s6 m4" *ngFor="let entity of entities">
     <div class="card horizontal" (click)="goToEntityDetails(entity.id)" entityBorderCard="blue" style="overflow: hidden;cursor: pointer;">
@@ -14,3 +15,10 @@
     </div>
   </div>
 </div>
+<a
+  routerLink="/entities/add"
+  class="btn-floating btn-large waves-effect waves-light red z-depth-3"
+  style="position: fixed; bottom: 25px; right: 25px; font-size: 50px; line-height: 1;"
+>
++
+</a>

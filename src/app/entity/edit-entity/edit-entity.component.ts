@@ -6,7 +6,8 @@ import { EntityService } from '../entity.service'
 @Component({
   selector: 'app-edit-entity',
   template: `
-    <div *ngIf="entity" class="center">
+    <h4 *ngIf='loading' class="center">Loading...</h4>
+    <div *ngIf="entity && !loading" class="center">
       <h2>Edit {{entity.name}}</h2>
       <img [src]="entity.picture">
     </div>
@@ -18,13 +19,17 @@ import { EntityService } from '../entity.service'
 export class EditEntityComponent implements OnInit {
 
   entity: Entity|undefined
+  loading: boolean = true
 
   constructor(private route: ActivatedRoute, private entityService: EntityService) { }
 
   ngOnInit() {
     const entityId: number|null = Number(this.route.snapshot.paramMap.get('id'))
     if (entityId) {
-      this.entity = this.entityService.getEntityById(entityId)
+      this.entityService.getEntityById(entityId).subscribe(entity => {
+        this.entity = entity
+        this.loading = false
+      })
     }
   }
 

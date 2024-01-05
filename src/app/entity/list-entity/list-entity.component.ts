@@ -11,11 +11,15 @@ import { Entity } from '../entity'
 })
 export class ListEntityComponent implements OnInit {
   entities: Entity[]
+  loading: boolean = true
 
   constructor(private router: Router, private entityService: EntityService) { }
 
   ngOnInit() {
-    this.entities = this.entityService.getEntities()
+    this.entityService.getEntities().subscribe(entities => {
+      this.entities = entities
+      this.loading = false
+    })
   }
 
   goToEntityDetails(id: number) {

@@ -36,10 +36,12 @@
       </div>
       <div class="card-action">
         <a style="cursor: pointer;" (click)="goToEntityList()">Back</a>
-        <a style="cursor: pointer;" (click)="goToEditEntity()">Edit</a>
+        <a style="cursor: pointer;" (click)="goToEditEntity(entity)">Edit</a>
+        <a style="cursor: pointer;" (click)="deleteEntity(entity)">Delete</a>
       </div>
     </div>
   </div>
   </div>
   </div>
-  <h4 *ngIf='!entity' class="center">Entity Not Found!</h4>
+  <h4 *ngIf='loading' class="center">Loading...</h4>
+  <h4 *ngIf='!entity && !loading' class="center">Entity Not Found!</h4>

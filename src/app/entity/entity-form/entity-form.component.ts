@@ -11,11 +11,13 @@ import { Router } from '@angular/router'
 export class EntityFormComponent implements OnInit {
   @Input() entity: Entity
   types: string[]
+  isAddForm: boolean
 
   constructor(private entityService: EntityService, private router: Router) { }
 
   ngOnInit() {
     this.types = this.entityService.getEntityTypeList()
+    this.isAddForm = this.router.url.includes('add')
   }
 
   hasType(type: string): boolean {
@@ -33,8 +35,13 @@ export class EntityFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submitted')
-    this.router.navigate(['/entities', this.entity.id])
+    if (this.isAddForm) {
+      this.entityService.createEntity(this.entity)
+        .subscribe((entity: Entity) => this.router.navigate(['/entities', entity.id]))
+    } else {
+      this.entityService.updateEntity(this.entity)
+        .subscribe(() => this.router.navigate(['/entities', this.entity.id]))
+    }
   }
 
   isTypesValid(type: string): boolean {
