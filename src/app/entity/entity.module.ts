@@ -13,12 +13,13 @@ import { EditEntityComponent } from './edit-entity/edit-entity.component'
 import { AddEntityComponent } from './add-entity/add-entity.component'
 import { SearchEntityComponent } from './search-entity/search-entity.component'
 import { LoaderComponent } from '../loader/loader.component'
+import { AuthGuard } from '../auth.guard'
 
 const entityRoutes: Routes = [
-  { path: 'entities', component: ListEntityComponent },
-  { path: 'entities/add', component: AddEntityComponent },
-  { path: 'entities/:id/edit', component: EditEntityComponent },
-  { path: 'entities/:id', component: DetailsEntityComponent }
+  { path: 'entities', component: ListEntityComponent, canActivate: [AuthGuard] },
+  { path: 'entities/add', component: AddEntityComponent, canActivate: [AuthGuard] },
+  { path: 'entities/:id/edit', component: EditEntityComponent, canActivate: [AuthGuard] },
+  { path: 'entities/:id', component: DetailsEntityComponent, canActivate: [AuthGuard] }
 ]
 
 @NgModule({
