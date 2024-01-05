@@ -1,4 +1,7 @@
-<h4 *ngIf='loading' class="center">Loading...</h4>
+<div *ngIf="loading" class="center" style="margin-top: 30px;">
+  <app-loader></app-loader>
+</div>
+<app-search-entity *ngIf="!loading"></app-search-entity>
 <div class="row">
   <div class="col s6 m4" *ngFor="let entity of entities">
     <div class="card horizontal" (click)="goToEntityDetails(entity.id)" entityBorderCard="blue" style="overflow: hidden;cursor: pointer;">

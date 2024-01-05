@@ -74,4 +74,15 @@ export class EntityService {
       catchError((err) => this.handleError(err, null))
     )
   }
+
+  searchEntities(term: string): Observable<Entity[]> {
+    term = term.trim()
+    if (term.length < 2) {
+      return of([])
+    }
+    return this.http.get<Entity[]>(`api/entities/?name=${term}`).pipe(
+      tap((res) => this.log(res)),
+      catchError((err) => this.handleError(err, []))
+    )
+  }
 }

@@ -1,47 +1,49 @@
 <div *ngIf="entity" class="row">
-  <div class="col s12 m8 offset-m2">
-  <h2 class="header center">{{ entity.name }}</h2>
-  <div class="card horizontal hoverable">
-    <div class="card-image">
-      <img [src]="entity.picture">
+<div class="col s12 m8 offset-m2">
+<h2 class="header center">{{ entity.name }}</h2>
+<div class="card horizontal hoverable">
+  <div class="card-image">
+    <img [src]="entity.picture">
+  </div>
+  <div class="card-stacked">
+    <div class="card-content">
+      <table class="bordered striped">
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td><strong>{{ entity.name }}</strong></td>
+          </tr>
+          <tr>
+            <td>Health</td>
+            <td><strong>{{ entity.hp }}</strong></td>
+          </tr>
+          <tr>
+            <td>Damage</td>
+            <td><strong>{{ entity.cp }}</strong></td>
+          </tr>
+          <tr>
+            <td>Types</td>
+            <td>
+              <span *ngFor="let type of entity.types" class="{{ type | entityTypeColor }}">{{ type }}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Creation Date</td>
+            <td><em>{{ entity.created | date:"dd/MM/yyyy" }}</em></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="card-stacked">
-      <div class="card-content">
-        <table class="bordered striped">
-          <tbody>
-            <tr>
-              <td>Name</td>
-              <td><strong>{{ entity.name }}</strong></td>
-            </tr>
-            <tr>
-              <td>Health</td>
-              <td><strong>{{ entity.hp }}</strong></td>
-            </tr>
-            <tr>
-              <td>Damage</td>
-              <td><strong>{{ entity.cp }}</strong></td>
-            </tr>
-            <tr>
-              <td>Types</td>
-              <td>
-                <span *ngFor="let type of entity.types" class="{{ type | entityTypeColor }}">{{ type }}</span>
-              </td>
-            </tr>
-            <tr>
-              <td>Creation Date</td>
-              <td><em>{{ entity.created | date:"dd/MM/yyyy" }}</em></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card-action">
-        <a style="cursor: pointer;" (click)="goToEntityList()">Back</a>
-        <a style="cursor: pointer;" (click)="goToEditEntity(entity)">Edit</a>
-        <a style="cursor: pointer;" (click)="deleteEntity(entity)">Delete</a>
-      </div>
+    <div class="card-action">
+      <a style="cursor: pointer;" (click)="goToEntityList()">Back</a>
+      <a style="cursor: pointer;" (click)="goToEditEntity(entity)">Edit</a>
+      <a style="cursor: pointer;" (click)="deleteEntity(entity)">Delete</a>
     </div>
   </div>
-  </div>
-  </div>
-  <h4 *ngIf='loading' class="center">Loading...</h4>
-  <h4 *ngIf='!entity && !loading' class="center">Entity Not Found!</h4>
+</div>
+</div>
+</div>
+<div *ngIf="loading" class="center" style="margin-top: 30px;">
+  <app-loader></app-loader>
+</div>
+<h4 *ngIf="!entity && !loading" class="center">Entity Not Found!</h4>

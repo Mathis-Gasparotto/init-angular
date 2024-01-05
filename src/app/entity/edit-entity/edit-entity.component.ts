@@ -6,7 +6,9 @@ import { EntityService } from '../entity.service'
 @Component({
   selector: 'app-edit-entity',
   template: `
-    <h4 *ngIf='loading' class="center">Loading...</h4>
+    <div *ngIf="loading" class="center" style="margin-top: 30px;">
+      <app-loader></app-loader>
+    </div>
     <div *ngIf="entity && !loading" class="center">
       <h2>Edit {{entity.name}}</h2>
       <img [src]="entity.picture">

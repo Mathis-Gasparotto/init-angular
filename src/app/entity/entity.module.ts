@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms'
 import { EntityFormComponent } from './entity-form/entity-form.component'
 import { EditEntityComponent } from './edit-entity/edit-entity.component'
 import { AddEntityComponent } from './add-entity/add-entity.component'
+import { SearchEntityComponent } from './search-entity/search-entity.component'
+import { LoaderComponent } from '../loader/loader.component'
 
 const entityRoutes: Routes = [
   { path: 'entities', component: ListEntityComponent },
@@ -28,6 +30,8 @@ const entityRoutes: Routes = [
     EntityFormComponent,
     EditEntityComponent,
     AddEntityComponent,
+    SearchEntityComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
